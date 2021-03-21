@@ -14,8 +14,6 @@ public class UserService implements UserDetailsService {
     @Autowired
     private UserRepo userRepo;
 
-    @Autowired
-    private MailSender mailSender;
 
 
     public User loadUserByUsername(String username){
@@ -40,7 +38,6 @@ public class UserService implements UserDetailsService {
                     user.getActivationCode()
             );
 
-            mailSender.send(user.getEmail(), "Activation code", message);
         }
 
         return true;
